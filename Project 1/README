@@ -1,7 +1,15 @@
 The src folder contains all java files and the test folder contains all JUnit test cases for the java files.
 
 Also, I am using eclipse and therefore have the input values for the input filename and output filename as arg[0] and arg[1].
- I am not sure if this will cause you a problem, but if you receive an outofbounds error, you will have to switch to arg[0] and arg[1] to arg[2] 
- arg[3] respectively in the SearchMap file. Thank you! 
+I am not sure if this will cause you a problem, but if you receive an outofbounds error, you will have to switch to arg[0] and arg[1] to arg[2] 
+arg[3] respectively in the SearchMap file. I did not run my program through command line, but rather modified my run configurations to include to arguments
 
- My GitHub repository is currently: https://github.com/harrisoncha/CSCI310/tree/master
+.git and .gitignore will be contained in my zip folder or on my GitHub repository.
+Because Eclipse already creates a .gitignore file, I was unable to create one within my directory.
+Therefore I create a .gitignore on my GitHub repository and within the zip folder you will also be able to find the .git folder
+ 
+https://github.com/harrisoncha/CSCI310/tree/master
+
+Thank you! 
+ 
+ 

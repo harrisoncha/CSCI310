@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="Project 1 Test" default="test-compile">
+<project name="Project 1 Test" default="doc">
 	
 	<property name="bin.dir" 	location="ant/build/bin" />
 	<property name="doc.dir" 	location="ant/build/doc" />
@@ -24,56 +24,52 @@
 		</delete>
 	</target>
 	
-	
-	 <classpath path="cs">
-	 	<fileset dir="lib">
-	 		<include name="**/*.jar"/>
-	 	</fileset>
-	 </classpath>
-	
+	<path id="junit">
+		<pathelement path="lib/junit-4.12.jar" />
+		<pathelement path="lib/hamcrest-core-1.3.jar" />
+		<pathelement path="${bin.dir}" />
+		<pathelement path="./src" />
+	</path>
 	
 	<target name="compile" depends="init">
 		<javac destdir="${bin.dir}" srcdir="./src" includeantruntime="true" />	
 	</target>
-	<target name ="test-compile" depends="init">
-		<javac destdir="${bin.dir}" srcdir="./test" includeantruntime="true" />	
-	</target>
 	
+	<target name ="test-compile" depends="compile">
+		<javac destdir="${bin.dir}" srcdir="./test" includeantruntime="true">
+			<classpath refid="junit" />
+		</javac>
+	</target>
 	
 	<target name="dist" depends="compile">
-		<jar destfile="${dist.dir}/app.jar" basedir="${bin.dir}" />
+		<jar destfile="${dist.dir}/src.jar" basedir="${bin.dir}" />
 	</target>	
-	<target name="dist-test" depends="compile">
-		<jar destfile="${dist.dir}/app.jar" basedir="${bin.dir}" />
+	<target name="dist-test" depends="dist">
+		<jar destfile="${dist.dir}/testjar" basedir="${bin.dir}" />
 	</target>
 	
+	<path id="class">
+		<pathelement path="./ant/build/bin/src" />
+		<pathelement path="./ant/build/bin/test" />
+	</path>
+		
 	
-	<target name="doc" depends="dist">	
-		<javadoc destdir="${doc.dir}" sourcepath="${bin.dir}">	  		  	
-			<fileset dir="./src">
-				<include name="**" />
-			</fileset>
+	<target name="doc" depends="dist-test">	
+		<javadoc destdir="${doc.dir}">  		  	
+			<fileset dir="src" />
 		</javadoc>
 	</target>
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	<target name="test" depends="compile">
+	<target name="test" depends="doc">
 		<junit haltonfailure="false" printsummary="true">
 			<classpath>
 				<pathelement location="./test" />
 			</classpath>
 			<formatter type="brief" usefile="false" />
 			<batchtest>
-				<fileset dir="${dist.test.dir}" />
+				<fileset dir="${dist.dir}" />
 			</batchtest>
+			
 		</junit>
 	</target> 
 	
