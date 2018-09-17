@@ -1,0 +1,5 @@
+The src folder contains all java files and the test folder contains all JUnit test cases for the java files.
+
+Also, I am using eclipse and therefore have the input values for the input filename and output filename as arg[0] and arg[1].
+ I am not sure if this will cause you a problem, but if you receive an outofbounds error, you will have to switch to arg[0] and arg[1] to arg[2] 
+ arg[3] respectively in the SearchMap file. Thank you! 

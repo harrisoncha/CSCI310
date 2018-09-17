@@ -1,0 +1,15 @@
+Destination    From           Price          
+R              P,R            300            
+X              P,R,X          500            
+W              P,W            200            
+Y              P,W,Y          700            
+Z              P,W,Y,Z        1150           
+R              P,W,Y,R        1300           
+X              P,W,Y,R,X      1500           
+S              P,W,S          450            
+T              P,W,S,T        750            
+W              P,W,S,T,W      1100           
+Y              P,W,S,T,W,Y    1600           
+Z              P,W,S,T,W,Y,Z  2050           
+R              P,W,S,T,W,Y,R  2200           
+X              P,W,S,T,W,Y,R,X2400           

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Project 1 Test" default="test">
+	
+	<property name="bin.dir" 	location="ant/build/bin" />
+	<property name="doc.dir" 	location="ant/build/doc" />
+	<property name="dist.dir" 	location="ant/build/dist" />
+	<property name="git.dir"	location="ant/build/.git" />
+	
+	<target name="init">
+		<mkdir dir="${bin.dir}" />
+		<mkdir dir="${dist.dir}" />
+		<mkdir dir="${doc.dir}" />
+		<mkdir dir="${git.dir}" />
+	</target>
+
+	<target name = "clean">
+		<delete dir="${bin.dir}">
+		</delete>
+		<delete dir="${dist.dir}">
+		</delete>
+		<delete dir="${doc.dir}">
+		</delete>
+		<delete dir="${.git}">
+		</delete>
+	</target>
+	
+	
+	<target name="compile" depends="init">
+		<javac destdir="${bin.dir}" srcdir="./src" includeantruntime="true" />	
+	</target>
+	<target name ="test-compile" depends="init">
+		<javac destdir="${bin.dir}" srcdir="./test" includeantruntime="true" />	
+	</target>
+	
+	
+	<target name="dist" depends="compile">
+		<jar destfile="${dist.dir}/app.jar" basedir="${bin.dir}" />
+	</target>	
+	<target name="dist-test" depends="compile">
+		<jar destfile="${dist.dir}/app.jar" basedir="${bin.dir}" />
+	</target>
+	
+	
+	<target name="doc" depends="dist">	
+		<javadoc destdir="${doc.dir}" sourcepath="${bin.dir}">	  		  	
+			<fileset dir="./src">
+				<include name="**" />
+			</fileset>
+		</javadoc>
+	</target>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<target name="test" depends="compile">
+		<junit haltonfailure="false" printsummary="true">
+			<classpath>
+				<pathelement location="./test" />
+			</classpath>
+			<formatter type="brief" usefile="false" />
+			<batchtest>
+				<fileset dir="${dist.test.dir}" />
+			</batchtest>
+		</junit>
+	</target> 
+	
+</project>
