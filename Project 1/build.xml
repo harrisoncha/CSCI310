@@ -55,8 +55,8 @@
 	<target name="test" depends="doc">
 		<junit haltonfailure="false" printsummary="true">
 			<classpath refid="junit" />
-			<formatter type="brief" usefile="false" />
-			<batchtest>
+			<formatter type="brief" usefile="false" />s		
+			<batchtest fork="true">
 				<fileset dir="${dist.dir}" >
 					<include name="**/*Test*.java"/>
 				</fileset>
