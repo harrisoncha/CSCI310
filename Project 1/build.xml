@@ -57,9 +57,10 @@
 			<classpath refid="junit" />
 			<formatter type="brief" usefile="false" />
 			<batchtest>
-				<fileset dir="${dist.dir}" />
+				<fileset dir="${dist.dir}" >
+					<include name="**/*Test*.java"/>
+				</fileset>
 			</batchtest>
-			
 		</junit>
 	</target> 
 	

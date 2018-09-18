@@ -1,30 +1,29 @@
 Hello! 
 
-For running java Searchmap inputfilename outputfilename, please build the class files for the bin folder first,
-then from your IDE move them to the same hierachical level as your input and output filename so that they can run together in the
-same 'level'(i.e. no need to /.. and search from another folder). -> This was the best solution I could think of. If there is a better way please do so.
+For running, java SearchMap inputfilename outputfilename, please build the class files for the bin folder first by typing in ant compile-test,
+then from your IDE move them to the same hierarchical level as your input and output filename so that they can run together in the
+same 'level'(i.e. no need to /.. and search from another folder). -> with my input and output files, it would be java SearchMap input.txt output.txt
 For the viewing of the file, please refer to the txt file in your IDE because the formatting style I used is at least, not supported by NotePad.
 
 
-As for my test and src files, I have kept them in separate folders and this changed how I created the dependencies for build.
-If you would like to ONLY compile the src files, then you can simply run ant compile, but the test class files will not be generated in this case.
-In order to have both class files created at the same time, you will have to type in an compile-test. This is the same for dist, ant dist or ant dist-test.
+As for my test and src files, I have kept them in separate folders and this changed how I created the dependencies for my build file.
+If you would like to ONLY compile the src files, then you can simply run ant compile.
+In order to have both test and src class files created at the same time, you will have to type in an ant compile-test. This is the same for dist-> ant dist or ant dist-test.
+
 
 Preferred: ant init, ant clean, ant compile-test (includes ant compile), ant dist-test (includes ant dist), ant doc, ant test.
-Weirdly, build.xml DOES not work on Eclipse, but is possible through command line. All folders are updated afterwards in the IDE by command line. 
+Weirdly, build.xml DOES not work on Eclipse for 'doc', but is possible through command line. All folders are updated afterwards in the IDE through command line. 
+-> I have connected the project to a local repository that is connected to GitHub.
 
-'An exception has occurred in the compiler (1.8.0_181). Please file a bug against the 
-Java compiler via the Java bug reporting page (http://bugreport.java.com) after checking the Bug Database 
-(http://bugs.java.com) for duplicates. Include your program and the following diagnostic in your report. Thank you.'
 
-.git and .gitignore will be contained in my zip folder or on my GitHub repository.
+.git and .gitignore will be contained in the zip folder or on my GitHub repository.
 Because Eclipse already creates a .gitignore file, I was unable to create one within my directory.
 Therefore I create a .gitignore on my GitHub repository and within the zip folder you will also be able to find the .git folder
+ 
  
 https://github.com/harrisoncha/CSCI310/tree/master
 
 Thank you!
-
 
 
 
