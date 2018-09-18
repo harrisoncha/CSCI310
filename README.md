@@ -4,5 +4,4 @@ Harrison Cha
 
 Project 1
 
-USC ID# 8775080431
-
+README for project is contained in the Project1 Folder.
