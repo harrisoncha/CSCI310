@@ -1,3 +1,4 @@
+package src;
 import java.util.HashMap;
 import java.util.Queue;
 
@@ -11,7 +12,7 @@ public class SearchMap {
 		
 		//populate hashmap with data of flight routes
 		map = FileReaderWriter.ReadFile(args[0], initialDestination);
-		
+		System.out.println(args[0]);
 		//start the search and retrieve results
 		Queue<Queue<String>> possibleRoutes = FlightMap.initiateSearch(map, initialDestination);
 		

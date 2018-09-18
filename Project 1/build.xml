@@ -5,12 +5,12 @@
 	<property name="doc.dir" 	location="ant/build/doc" />
 	<property name="dist.dir" 	location="ant/build/dist" />
 	<property name="git.dir"	location="ant/build/.git" />
+	<property name="source.dir"	location="./src" />
 	
 	<target name="init">
 		<mkdir dir="${bin.dir}" />
 		<mkdir dir="${dist.dir}" />
 		<mkdir dir="${doc.dir}" />
-		<mkdir dir="${git.dir}" />
 	</target>
 
 	<target name = "clean">
@@ -20,51 +20,41 @@
 		</delete>
 		<delete dir="${doc.dir}">
 		</delete>
-		<delete dir="${.git}">
-		</delete>
 	</target>
 	
 	<path id="junit">
 		<pathelement path="lib/junit-4.12.jar" />
 		<pathelement path="lib/hamcrest-core-1.3.jar" />
 		<pathelement path="${bin.dir}" />
-		<pathelement path="./src" />
+		<pathelement path="${source.dir}" />
 	</path>
 	
 	<target name="compile" depends="init">
-		<javac destdir="${bin.dir}" srcdir="./src" includeantruntime="true" />	
+		<javac destdir="${bin.dir}" srcdir="${source.dir}" includeantruntime="true" />	
 	</target>
 	
-	<target name ="test-compile" depends="compile">
+	<target name ="compile-test" depends="compile">
 		<javac destdir="${bin.dir}" srcdir="./test" includeantruntime="true">
 			<classpath refid="junit" />
 		</javac>
 	</target>
 	
-	<target name="dist" depends="compile">
+	<target name="dist" depends="compile-test">
 		<jar destfile="${dist.dir}/src.jar" basedir="${bin.dir}" />
 	</target>	
 	<target name="dist-test" depends="dist">
 		<jar destfile="${dist.dir}/testjar" basedir="${bin.dir}" />
 	</target>
 	
-	<path id="class">
-		<pathelement path="./ant/build/bin/src" />
-		<pathelement path="./ant/build/bin/test" />
-	</path>
-		
-	
-	<target name="doc" depends="dist-test">	
+	<target name="doc" depends="dist-test" >	
 		<javadoc destdir="${doc.dir}">  		  	
-			<fileset dir="src" />
+			<fileset dir="${source.dir}" />
 		</javadoc>
 	</target>
 	
 	<target name="test" depends="doc">
 		<junit haltonfailure="false" printsummary="true">
-			<classpath>
-				<pathelement location="./test" />
-			</classpath>
+			<classpath refid="junit" />
 			<formatter type="brief" usefile="false" />
 			<batchtest>
 				<fileset dir="${dist.dir}" />
